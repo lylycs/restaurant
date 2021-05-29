@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;800&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Montserrat", sans-serif !important;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+#header h2 {
+	margin: 8px 0;
+	color: rgb(143, 143, 143);
+}
+
+#body {
+	flex: 1;
+}
+
+#no-restaurant-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+}
+
+#restaurant-list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 8px 0px;
+}
+
+.restaurant-card {
+	min-width: max-content;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin: 4px;
+}
+
+.restaurant-card .info {
+	font-weight: bold;
+	font-size: 12px;
+	padding: 2px 4px;
+	margin: 8px 0px;
+	width: min-content;
+	border: 1px solid grey;
+	display: flex;
+}
+
+.restaurant-card-edit {
+	text-align: center;
+	padding: 8px;
+	border-top: 2px solid rgb(241, 241, 241);
+	font-weight: bold;
+	color: rgb(211, 211, 211);
+}
+
+.logo {
+	height: 80px;
+	box-shadow: 1px 1px 14px 1px rgb(200, 199, 199);
+	padding-left: 15px;
+	display: flex;
+
+	justify-content: center;
+	align-content: center;
+}
+
+#logout-btn {
+	background-color: black;
+	padding: 7px;
+	color: white;
+	margin: 10px;
+	border-radius: 7px;
+	font-weight: bold;
+	border: 1px solid black;
+}

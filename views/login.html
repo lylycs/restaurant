@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lylycs Business Login</title>
+		<link rel="stylesheet" href="/styles/login.css" />
+		<link rel="stylesheet" href="/styles/global.css" />
+	</head>
+	<body>
+		<div class="logo">
+			<img
+				class="img"
+				src="/assets/logotext.png"
+				height="40px"
+				width="160.41px"
+			/>
+		</div>
+
+		<div class="container-sm">
+			<section id="header">
+				<h1 align="center" style="font-size: 40px; font-weight: bolder">
+					Lylycs Login
+				</h1>
+				<center><p style="color: red" id="message-container"></p></center>
+
+				<center>
+					<table>
+						<tr>
+							<td align="center">
+								<form>
+									<input
+										placeholder="username"
+										id="uname"
+										type="text"
+										required
+									/>
+								</form>
+							</td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td align="center">
+								<form>
+									<input
+										placeholder="password"
+										id="password"
+										type="password"
+										required
+									/>
+								</form>
+							</td>
+						</tr>
+					</table>
+				</center>
+				<center>
+					<table width>
+						<tr>
+							<td>
+								<form>
+									<input type="button" value="Login" id="login-form-submit" />
+								</form>
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<center>
+					<p class="dhac">
+						Don't have an account? <a href="./emailVerification.html">Signup</a>
+					</p>
+				</center>
+			</section>
+		</div>
+		<section id="footer">
+			<div class="footer-contact">
+				<ul>
+					<li>
+						<a href="https://www.instagram.com/battlr.in/" target="_blank"
+							>Instagram</a
+						>
+					</li>
+					<li><a href="mailto: leostelon17@gamil.com">Email</a></li>
+					<li>
+						<a
+							href="https://www.linkedin.com/in/v-nethaji-6a29b3190"
+							target="_blank"
+							>Developer</a
+						>
+					</li>
+					<li><a href="#">PlayStore</a></li>
+				</ul>
+			</div>
+			<div class="footer-brand">
+				<h1 style="text-align: center">lylycs.com🥡</h1>
+				<center>
+					<small>&copy; Copyright 2020, lylycs.com. All Rights Reserved.</small>
+				</center>
+			</div>
+			<div class="footer-terms" style="display: flex">
+				<ul>
+					<li><a href="terms.html">Terms and Conditions</a></li>
+					<li><a href="privacy.html">Privacy Policy</a></li>
+				</ul>
+			</div>
+		</section>
+
+		<script>
+			if (localStorage.getItem("token")) location.replace("home.html");
+			const form = document.getElementById("login-form-submit");
+			const uinput = document.getElementById("uname");
+			const pinput = document.getElementById("password");
+			const messageContainer = document.getElementById("message-container");
+
+			form.addEventListener("click", (e) => {
+				if (!uinput.checkValidity() || !pinput.checkValidity()) {
+					return (messageContainer.innerHTML =
+						uinput.validationMessage + "\n" + pinput.validationMessage);
+				}
+				e.preventDefault();
+				messageContainer.innerHTML = "loading...";
+				fetch("http://localhost:3000/v1/restaurant/owner/login", {
+					method: "post",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						username: uinput.value,
+						password: pinput.value,
+					}),
+				})
+					.then((r) => r.json())
+					.then((r) => {
+						console.log(r);
+						if (r.token) {
+							localStorage.setItem("token", r.token);
+							localStorage.setItem("user", JSON.stringify(r.owner));
+							window.location.replace("./home.html");
+						} else {
+							messageContainer.innerHTML = r.message;
+						}
+					});
+			});
+		</script>
+	</body>
+</html>

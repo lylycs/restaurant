@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;800&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Montserrat", sans-serif;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+#body {
+	padding: 16px;
+	flex: 1;
+}
+
+p {
+	margin-bottom: 0;
+}
+
+#restaurantRating {
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	border: 2px solid rgb(175, 175, 175);
+	padding: 4px;
+	margin: 4px 0;
+	border-style: dotted;
+}
+
+.review-card {
+	display: flex;
+	border-radius: 8px;
+	flex-direction: column;
+	margin: 16px 8px;
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.review-card-header {
+	display: flex;
+	align-items: center;
+	padding: 8px;
+}
+
+.review-card-header img {
+	width: 50px;
+	border-radius: 50%;
+	margin: 4px 12px 4px 4px;
+}
+
+.review-card-body {
+	padding: 8px;
+}
+
+.review-card-images {
+	display: flex;
+	flex-direction: row;
+	overflow: scroll;
+	overflow-y: hidden;
+}
+
+.review-card-images img {
+	height: 150px;
+	margin: 8px;
+}
+
+.logo {
+	height: 80px;
+	box-shadow: 1px 1px 14px 1px rgb(200, 199, 199);
+	padding-left: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
