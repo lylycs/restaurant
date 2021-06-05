@@ -8,6 +8,7 @@ const submitbtn = document.getElementById("submitbtn");
 
 // Location Component Variables
 const updateLocationbtn = document.getElementById("updatelocation-btn");
+const locationloader = document.getElementById("locationloader");
 const locationbtn = document.getElementById("locationbtn");
 const updateLocationmsg = document.getElementById("updatelocation-msg");
 const mapHolder = document.getElementById("mapholder");
@@ -96,9 +97,12 @@ async function createRestaurant() {
 }
 
 // Update Location
-function updateLocation() {
+async function updateLocation() {
+	locationloader.innerHTML = "Fetching current location...";
+	await new Promise((resolve) => setTimeout(resolve, 3000));
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition, showError);
+		locationloader.innerHTML = "";
 	} else {
 		updateLocationmsg.innerHTML =
 			"Geolocation is not supported by this browser.";
@@ -127,7 +131,7 @@ async function showPosition(position) {
 			map: map,
 		});
 		mapHolder.style.height = "200px";
-		mapHolder.style.width = "100vw";
+		mapHolder.style.width = "90vw";
 		updateLocationmsg.innerHTML = "";
 		restaurantCoords = position.coords;
 	} catch (error) {
